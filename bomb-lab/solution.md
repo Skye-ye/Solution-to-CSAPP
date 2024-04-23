@@ -86,11 +86,11 @@ The moon unit will be divided into two divisions.
 
 ```assembly
 Dump of assembler code for function phase_2:
-   0x0000000000400f0c <+0>: push   %rbp
-   0x0000000000400f0d <+1>: push   %rbx
-   0x0000000000400f0e <+2>: sub    $0x28,%rsp
-   0x0000000000400f12 <+6>: mov    %rsp,%rsi
-   0x0000000000400f15 <+9>: callq  0x40169f <read_six_numbers>
+   0x0000000000400f0c <+0>:   push   %rbp
+   0x0000000000400f0d <+1>:   push   %rbx
+   0x0000000000400f0e <+2>:   sub    $0x28,%rsp
+   0x0000000000400f12 <+6>:   mov    %rsp,%rsi
+   0x0000000000400f15 <+9>:   callq  0x40169f <read_six_numbers>
    0x0000000000400f1a <+14>:  cmpl   $0x0,(%rsp)
    0x0000000000400f1e <+18>:  jns    0x400f44 <phase_2+56>
    0x0000000000400f20 <+20>:  callq  0x401669 <explode_bomb>
