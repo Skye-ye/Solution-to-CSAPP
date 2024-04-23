@@ -48,9 +48,9 @@
 
 ```assembly
 Dump of assembler code for function phase_1:
-   0x0000000000400ef0 <+0>:	  sub    $0x8,%rsp
-   0x0000000000400ef4 <+4>:	  mov    $0x4025c0,%esi
-   0x0000000000400ef9 <+9>:	  callq  0x4013be <strings_not_equal>
+   0x0000000000400ef0 <+0>:	sub    $0x8,%rsp
+   0x0000000000400ef4 <+4>:	mov    $0x4025c0,%esi
+   0x0000000000400ef9 <+9>:	callq  0x4013be <strings_not_equal>
    0x0000000000400efe <+14>:	test   %eax,%eax
    0x0000000000400f00 <+16>:	je     0x400f07 <phase_1+23>
    0x0000000000400f02 <+18>:	callq  0x401669 <explode_bomb>
@@ -63,7 +63,7 @@ Dump of assembler code for function phase_1:
 其中有一行比较特殊：
 
 ```assembly
-0x0000000000400ef4 <+4>:	  mov    $0x4025c0,%esi
+0x0000000000400ef4 <+4>:  	mov    $0x4025c0,%esi
 ```
 
 打印一下0x4025c0的内容：
@@ -94,9 +94,9 @@ The moon unit will be divided into two divisions.
 
 ```assembly
 Dump of assembler code for function phase_3:
-   0x0000000000400f57 <+0>:	  sub    $0x18,%rsp
-   0x0000000000400f5b <+4>:	  lea    0x8(%rsp),%r8
-   0x0000000000400f60 <+9>:	  lea    0x7(%rsp),%rcx
+   0x0000000000400f57 <+0>:	sub    $0x18,%rsp
+   0x0000000000400f5b <+4>:	lea    0x8(%rsp),%r8
+   0x0000000000400f60 <+9>:	lea    0x7(%rsp),%rcx
    0x0000000000400f65 <+14>:	lea    0xc(%rsp),%rdx
    0x0000000000400f6a <+19>:	mov    $0x40261e,%esi
    0x0000000000400f6f <+24>:	mov    $0x0,%eax
@@ -260,9 +260,9 @@ Dump of assembler code for function phase_3:
 
 ```assembly
 Dump of assembler code for function phase_4:
-   0x00000000004010dc <+0>:	  sub    $0x18,%rsp
-   0x00000000004010e0 <+4>:	  lea    0xc(%rsp),%rcx
-   0x00000000004010e5 <+9>:	  lea    0x8(%rsp),%rdx
+   0x00000000004010dc <+0>:	sub    $0x18,%rsp
+   0x00000000004010e0 <+4>:	lea    0xc(%rsp),%rcx
+   0x00000000004010e5 <+9>:	lea    0x8(%rsp),%rdx
    0x00000000004010ea <+14>:	mov    $0x4028a1,%esi
    0x00000000004010ef <+19>:	mov    $0x0,%eax
    0x00000000004010f4 <+24>:	callq  0x400c30 <__isoc99_sscanf@plt>
@@ -333,12 +333,12 @@ func4：
 
 ```assembly
 Dump of assembler code for function func4:
-   0x00000000004010a4 <+0>:	  push   %r12
-   0x00000000004010a6 <+2>:	  push   %rbp
-   0x00000000004010a7 <+3>:	  push   %rbx
-   0x00000000004010a8 <+4>:	  mov    %edi,%ebx
-   0x00000000004010aa <+6>:	  test   %edi,%edi
-   0x00000000004010ac <+8>:	  jle    0x4010d2 <func4+46>
+   0x00000000004010a4 <+0>:	push   %r12
+   0x00000000004010a6 <+2>:	push   %rbp
+   0x00000000004010a7 <+3>:	push   %rbx
+   0x00000000004010a8 <+4>:	mov    %edi,%ebx
+   0x00000000004010aa <+6>:	test   %edi,%edi
+   0x00000000004010ac <+8>:	jle    0x4010d2 <func4+46>
    0x00000000004010ae <+10>:	mov    %esi,%ebp
    0x00000000004010b0 <+12>:	mov    %esi,%eax
    0x00000000004010b2 <+14>:	cmp    $0x1,%edi
@@ -363,9 +363,9 @@ Dump of assembler code for function func4:
 进入func4后，继续执行：
 
 ```assembly
-0x00000000004010a8 <+4>:	  mov    %edi,%ebx
-0x00000000004010aa <+6>:	  test   %edi,%edi
-0x00000000004010ac <+8>:	  jle    0x4010d2 <func4+46>
+0x00000000004010a8 <+4>:	mov    %edi,%ebx
+0x00000000004010aa <+6>:	test   %edi,%edi
+0x00000000004010ac <+8>:	jle    0x4010d2 <func4+46>
 ```
 
 这里将%rsi里的值，即6，传给%rbx，然后再判断一下%rdi里的值是否是零，如果是0，那么直接返回0，但这里显然不会是0，于是继续执行
@@ -396,10 +396,10 @@ Dump of assembler code for function func4:
 
 ```assembly
 Dump of assembler code for function phase_5:
-   0x000000000040112d <+0>:	  push   %rbx
-   0x000000000040112e <+1>:	  sub    $0x10,%rsp
-   0x0000000000401132 <+5>:	  mov    %rdi,%rbx
-   0x0000000000401135 <+8>:	  callq  0x4013a1 <string_length>
+   0x000000000040112d <+0>:	push   %rbx
+   0x000000000040112e <+1>:	sub    $0x10,%rsp
+   0x0000000000401132 <+5>:	mov    %rdi,%rbx
+   0x0000000000401135 <+8>:	callq  0x4013a1 <string_length>
    0x000000000040113a <+13>:	cmp    $0x6,%eax
    0x000000000040113d <+16>:	je     0x401182 <phase_5+85>
    0x000000000040113f <+18>:	callq  0x401669 <explode_bomb>
@@ -462,7 +462,7 @@ Dump of assembler code for function phase_5:
 接下来一行，把0x402670加上%rdx的值之后的地址上的一个字符赋给%rdx。由于%rdx只能取0～15，我们不妨打印一下0x402670开始的16个字符：
 
 ```assembly
-0x402670 <array.3160>:	  109 'm'	97 'a'	100 'd'	117 'u'	105 'i'	101 'e'	114 'r'	115 's'
+0x402670 <array.3160>:	109 'm'	97 'a'	100 'd'	117 'u'	105 'i'	101 'e'	114 'r'	115 's'
 0x402678 <array.3160+8>:	110 'n'	102 'f'	111 'o'	116 't'	118 'v'	98 'b'	121 'y'	108 'l'
 ```
 
@@ -501,12 +501,12 @@ mfcdhw (大写也可以)
 
 ```assembly
 Dump of assembler code for function phase_6:
-   0x000000000040118f <+0>:	  push   %r14
+   0x000000000040118f <+0>:	push   %r14
    0x0000000000401191 <+2>:  	push   %r13
-   0x0000000000401193 <+4>:	  push   %r12
-   0x0000000000401195 <+6>:	  push   %rbp
+   0x0000000000401193 <+4>:	push   %r12
+   0x0000000000401195 <+6>:	push   %rbp
    0x0000000000401196 <+7>:  	push   %rbx
-   0x0000000000401197 <+8>:	  sub    $0x50,%rsp
+   0x0000000000401197 <+8>:	sub    $0x50,%rsp
    0x000000000040119b <+12>:	lea    0x30(%rsp),%r13
    0x00000000004011a0 <+17>:	mov    %r13,%rsi
    0x00000000004011a3 <+20>:	callq  0x40169f <read_six_numbers>
@@ -643,7 +643,7 @@ for (int i = 0; i < 6 i++) {
 ---
 
 ```assembly
-0x00000000004011f1 <+98>:	  lea    0x48(%rsp),%rsi
+0x00000000004011f1 <+98>:	lea    0x48(%rsp),%rsi
 0x00000000004011f6 <+103>:	mov    %r14,%rax
 0x00000000004011f9 <+106>:	mov    $0x7,%ecx
 0x00000000004011fe <+111>:	mov    %ecx,%edx
@@ -673,25 +673,25 @@ for (int i = 0; i < 6 i++) {
 于是基本可以确定，这个指针指向的是一个结构体，我们不妨打印一下0x6042f0及其后继的内存空间：
 
 ```assembly
-0x6042f0 <node1>:	  0x24	0x02	0x00	0x00	0x01	0x00	0x00	0x00
-0x6042f8 <node1+8>:	0x00	0x43	0x60	0x00	0x00	0x00	0x00	0x00
-0x604300 <node2>:	  0x44	0x03	0x00	0x00	0x02	0x00	0x00	0x00
-0x604308 <node2+8>:	0x10	0x43	0x60	0x00	0x00	0x00	0x00	0x00
-0x604310 <node3>:	  0xdc	0x01	0x00	0x00	0x03	0x00	0x00	0x00
-0x604318 <node3+8>:	0x20	0x43	0x60	0x00	0x00	0x00	0x00	0x00
-0x604320 <node4>:	  0x25	0x02	0x00	0x00	0x04	0x00	0x00	0x00
-0x604328 <node4+8>:	0x30	0x43	0x60	0x00	0x00	0x00	0x00	0x00
-0x604330 <node5>:	  0x0c	0x01	0x00	0x00	0x05	0x00	0x00	0x00
-0x604338 <node5+8>:	0x40	0x43	0x60	0x00	0x00	0x00	0x00	0x00
-0x604340 <node6>:	  0x74	0x02	0x00	0x00	0x06	0x00	0x00	0x00
-0x604348 <node6+8>:	0x00	0x00	0x00	0x00	0x00	0x00	0x00  0x00
+0x6042f0 <node1>:	    0x24	0x02	0x00	0x00	0x01	0x00	0x00	0x00
+0x6042f8 <node1+8>:	  0x00	0x43	0x60	0x00	0x00	0x00	0x00	0x00
+0x604300 <node2>:	    0x44	0x03	0x00	0x00	0x02	0x00	0x00	0x00
+0x604308 <node2+8>:	  0x10	0x43	0x60	0x00	0x00	0x00	0x00	0x00
+0x604310 <node3>:	    0xdc	0x01	0x00	0x00	0x03	0x00	0x00	0x00
+0x604318 <node3+8>:	  0x20	0x43	0x60	0x00	0x00	0x00	0x00	0x00
+0x604320 <node4>:	    0x25	0x02	0x00	0x00	0x04	0x00	0x00	0x00
+0x604328 <node4+8>:	  0x30	0x43	0x60	0x00	0x00	0x00	0x00	0x00
+0x604330 <node5>:	    0x0c	0x01	0x00	0x00	0x05	0x00	0x00	0x00
+0x604338 <node5+8>:	  0x40	0x43	0x60	0x00	0x00	0x00	0x00	0x00
+0x604340 <node6>:	    0x74	0x02	0x00	0x00	0x06	0x00	0x00	0x00
+0x604348 <node6+8>:	  0x00	0x00	0x00	0x00	0x00	0x00	0x00  0x00
 ```
 
 可以发现一共有六个结构体，所以这应该是一个结构体数组，由其名字node可以大胆猜测这是一个链式结构，用`x /w`来打印一下看看：
 
 ```assembly
-                                           （*node）
-0x6042f0 <node1>:	0x00000224	0x00000001	0x00604300	0x00000000
+                                                              （*node）
+0x6042f0 <node1>:	0x00000224	0x00000001  0x00604300	0x00000000
 0x604300 <node2>:	0x00000344	0x00000002	0x00604310	0x00000000
 0x604310 <node3>:	0x000001dc	0x00000003	0x00604320	0x00000000
 0x604320 <node4>:	0x00000225	0x00000004	0x00604330	0x00000000
@@ -797,9 +797,9 @@ for (int i = 0; i < 6; i++) {
 
 ```assembly
 Dump of assembler code for function phase_defused:
-   0x0000000000401807 <+0>:	  sub    $0x68,%rsp
-   0x000000000040180b <+4>:	  mov    $0x1,%edi
-   0x0000000000401810 <+9>:	  callq  0x40154a <send_msg>
+   0x0000000000401807 <+0>:	sub    $0x68,%rsp
+   0x000000000040180b <+4>: mov    $0x1,%edi
+   0x0000000000401810 <+9>:	callq  0x40154a <send_msg>
    0x0000000000401815 <+14>:	cmpl   $0x6,0x202f80(%rip)        # 0x60479c <num_input_strings>
    0x000000000040181c <+21>:	jne    0x40188b <phase_defused+132>
    0x000000000040181e <+23>:	lea    0x10(%rsp),%r8
@@ -867,8 +867,8 @@ $2 = 0x4028f4 "DrEvil"
 
 ```assembly
 Dump of assembler code for function secret_phase:
-   0x00000000004012df <+0>:	  push   %rbx
-   0x00000000004012e0 <+1>:	  callq  0x4016e1 <read_line>
+   0x00000000004012df <+0>:	push   %rbx
+   0x00000000004012e0 <+1>:	callq  0x4016e1 <read_line>
    0x00000000004012e5 <+6>:  	mov    $0xa,%edx
    0x00000000004012ea <+11>:	mov    $0x0,%esi
    0x00000000004012ef <+16>:	mov    %rax,%rdi
@@ -915,10 +915,10 @@ Dump of assembler code for function secret_phase:
 
 ```assembly
 Dump of assembler code for function fun7:
-   0x00000000004012a1 <+0>:	  sub    $0x8,%rsp
-   0x00000000004012a5 <+4>:	  test   %rdi,%rdi
-   0x00000000004012a8 <+7>:	  je     0x4012d5 <fun7+52>
-   0x00000000004012aa <+9>:	  mov    (%rdi),%edx
+   0x00000000004012a1 <+0>:	sub    $0x8,%rsp
+   0x00000000004012a5 <+4>:	test   %rdi,%rdi
+   0x00000000004012a8 <+7>:	je     0x4012d5 <fun7+52>
+   0x00000000004012aa <+9>: mov    (%rdi),%edx
    0x00000000004012ac <+11>:	cmp    %esi,%edx
    0x00000000004012ae <+13>:	jle    0x4012bd <fun7+28>
    0x00000000004012b0 <+15>:	mov    0x8(%rdi),%rdi
