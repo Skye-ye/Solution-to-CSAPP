@@ -158,7 +158,7 @@ for (int i = 1; i < 6; i++) {
 
 ```
 1 2 4 7 11 16
-(满足x, x+1, x+3, x+6, x+10, x+15)的形式即可
+(满足x, x+1, x+3, x+6, x+10, x+15的形式即可)
 ```
 
 ## Phase 3
@@ -493,7 +493,7 @@ Dump of assembler code for function func4:
 于是我们可以写出func4的c语言形式：
 
 ```C
-x in %rdi, y in %rsi
+/* x in %rdi, y in %rsi */
 int func4(int x, int y) {
   if (x <= 0) return 0;
   if (x == 1) return y;
