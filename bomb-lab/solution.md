@@ -48,9 +48,9 @@
 
 ```assembly
 Dump of assembler code for function phase_1:
-   0x0000000000400ef0 <+0>: sub    $0x8,%rsp
-   0x0000000000400ef4 <+4>: mov    $0x4025c0,%esi
-   0x0000000000400ef9 <+9>: callq  0x4013be <strings_not_equal>
+   0x0000000000400ef0 <+0>:   sub    $0x8,%rsp
+   0x0000000000400ef4 <+4>:   mov    $0x4025c0,%esi
+   0x0000000000400ef9 <+9>:   callq  0x4013be <strings_not_equal>
    0x0000000000400efe <+14>:  test   %eax,%eax
    0x0000000000400f00 <+16>:  je     0x400f07 <phase_1+23>
    0x0000000000400f02 <+18>:  callq  0x401669 <explode_bomb>
