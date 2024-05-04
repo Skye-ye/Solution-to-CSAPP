@@ -979,7 +979,7 @@ Dump of assembler code for function phase_defused:
 ---
 
 为了验证这一猜想，我们可以打印一下sscanf函数的第一个参数，因为对照函数定义我们可以知道第一个参数就是源字符串的指针。而0x6048b0显然是全局变量区中的数据，那么他对应着我们之前输入过的字符串的可能性就更大了：
-```
+```assembly
 (gdb) x/s $0x6048b0
 0x6048b0 <input_strings+240>: "60 3"
 ```
@@ -990,13 +990,13 @@ Dump of assembler code for function phase_defused:
 
 我们不妨更进一步，看看input_strings这个全局变量的结构，首先用`readelf -s bomb`读取一下这个symbol的地址：
 
-```
+```assembly
 00000000006047c0  1600 OBJECT  GLOBAL DEFAULT   25 input_strings
 ```
 
 接下来打印以该地址为始的一段内容以寻找规律：
 
-```
+```assembly
 (gdb) x/500c 0x6047c0
 0x6047c0 <input_strings>: 84 'T'  104 'h' 101 'e' 32 ' '  109 'm' 111 'o' 111 'o' 110 'n'
 0x6047c8 <input_strings+8>: 32 ' '  117 'u' 110 'n' 105 'i' 116 't' 32 ' '  119 'w' 105 'i'
@@ -1023,7 +1023,7 @@ Dump of assembler code for function phase_defused:
 
 比较乱，但是可以发现每80个字节是一个字符串，于是可以想到这应该是一个二维字符数组的形式，就像这样：`char[][80]`。接着打印一下，可以发现确实如此：
 
-```
+```assembly
 (gdb) x/s 0x6047c0
 0x6047c0 <input_strings>: "The moon unit will be divided into two divisions."
 (gdb) x/s 0x6047c0 + 80
@@ -1044,7 +1044,7 @@ Dump of assembler code for function phase_defused:
 
 回归正题，打印一下strings_not_equal的传入参数：
 
-```
+```assembly
 (gdb) x/s 0x4028f4
 0x4028f4: "DrEvil"
 ```
