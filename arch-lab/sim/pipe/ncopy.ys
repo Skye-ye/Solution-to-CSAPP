@@ -1,0 +1,170 @@
+#/* $begin ncopy-ys */
+##################################################################
+# ncopy.ys - Copy a src block of len words to dst.
+# Return the number of positive words (>0) contained in src.
+#
+# Include your name and ID here.
+#
+# Describe how and why you modified the baseline code.
+#
+##################################################################
+# Do not modify this portion
+# Function prologue.
+# %rdi = src, %rsi = dst, %rdx = len
+ncopy:
+
+##################################################################
+# You can modify this portion
+	# Loop header
+	iaddq $-8, %rdx
+	jl handle_remainder
+
+Loop:
+	mrmovq (%rdi), %r8
+	mrmovq 8(%rdi), %r9
+	mrmovq 16(%rdi), %r10
+	mrmovq 24(%rdi), %r11
+	mrmovq 32(%rdi), %r12
+	mrmovq 40(%rdi), %r13
+	mrmovq 48(%rdi), %r14
+	mrmovq 56(%rdi), %rcx
+
+judge_0:
+	andq %r8, %r8
+	rmmovq %r8, (%rsi)
+	jle judge_1
+	iaddq $1, %rax
+judge_1:
+	andq %r9, %r9
+	rmmovq %r9, 8(%rsi)
+	jle judge_2
+	iaddq $1, %rax
+judge_2:
+	andq %r10, %r10
+	rmmovq %r10, 16(%rsi)
+	jle judge_3
+	iaddq $1, %rax
+judge_3:
+	andq %r11, %r11
+	rmmovq %r11, 24(%rsi)
+	jle judge_4
+	iaddq $1, %rax
+judge_4:
+	andq %r12, %r12
+	rmmovq %r12, 32(%rsi)
+	jle judge_5
+	iaddq $1, %rax
+judge_5:
+	andq %r13, %r13
+	rmmovq %r13, 40(%rsi)
+	jle judge_6
+	iaddq $1, %rax
+judge_6:
+	andq %r14, %r14
+	rmmovq %r14, 48(%rsi)
+	jle judge_7
+	iaddq $1, %rax
+judge_7:
+	andq %rcx, %rcx
+	rmmovq %rcx, 56(%rsi)
+	jle update
+	iaddq $1, %rax
+update:
+	iaddq $64, %rdi
+	iaddq $64, %rsi
+	iaddq $-8, %rdx
+	jge Loop
+
+handle_remainder:
+	irmovq handlers, %r8
+	addq %rdx, %rdx
+	addq %rdx, %rdx
+	addq %rdx, %rdx
+	addq %rdx, %r8
+	mrmovq (%r8), %r8
+	pushq %r8
+	ret
+
+	.align 8
+	.quad Done
+	.quad handler_entry_1
+	.quad handler_entry_2
+	.quad handler_entry_3
+	.quad handler_entry_4
+	.quad handler_entry_5
+	.quad handler_entry_6
+	.quad handler_entry_7
+handlers:
+
+handler_entry_7:
+	mrmovq 48(%rdi), %r8
+	jmp handler_7
+handler_entry_6:
+	mrmovq 40(%rdi), %r8
+	jmp handler_6
+handler_entry_5:
+	mrmovq 32(%rdi), %r8
+	jmp handler_5
+handler_entry_4:
+	mrmovq 24(%rdi), %r8
+	jmp handler_4
+handler_entry_3:
+	mrmovq 16(%rdi), %r8
+	jmp handler_3
+handler_entry_2:
+	mrmovq 8(%rdi), %r8
+	jmp handler_2
+handler_entry_1:
+	mrmovq (%rdi), %r8
+	jmp handler_1
+
+handler_7:
+	andq %r8, %r8
+	rmmovq %r8, 48(%rsi)
+	mrmovq 40(%rdi), %r8
+	jle handler_6
+	iaddq $1, %rax
+handler_6:
+	andq %r8, %r8
+	rmmovq %r8, 40(%rsi)
+	mrmovq 32(%rdi), %r8
+	jle handler_5
+	iaddq $1, %rax
+handler_5:
+	andq %r8, %r8
+	rmmovq %r8, 32(%rsi)
+	mrmovq 24(%rdi), %r8
+	jle handler_4
+	iaddq $1, %rax
+handler_4:
+	andq %r8, %r8
+	rmmovq %r8, 24(%rsi)
+	mrmovq 16(%rdi), %r8
+	jle handler_3
+	iaddq $1, %rax
+handler_3:
+	andq %r8, %r8
+	rmmovq %r8, 16(%rsi)
+	mrmovq 8(%rdi), %r8
+	jle handler_2
+	iaddq $1, %rax
+handler_2:
+	andq %r8, %r8
+	rmmovq %r8, 8(%rsi)
+	mrmovq (%rdi), %r8
+	jle handler_1
+	iaddq $1, %rax
+handler_1:
+	andq %r8, %r8
+	rmmovq %r8, (%rsi)
+	jle Done
+	iaddq $1, %rax
+##################################################################
+# Do not modify the following section of code
+# Function epilogue.
+Done:
+	ret
+##################################################################
+# Keep the following label at the end of your function
+End:
+#/* $end ncopy-ys */

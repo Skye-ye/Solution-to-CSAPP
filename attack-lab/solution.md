@@ -405,6 +405,3 @@ df 18 40 00 00 00 00 00 /* movq %rax, %rdi */
   ```
 
   没有紧跟c3的代码，也没有nop，但是看一下官方handout就可以知道这一关的代码中有由2字节编码的***functional nop***，他们由andb、orb、cmpb、testb组成，对照十六进制编码就可找到他们，作为可行解
-
-
-
